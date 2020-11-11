@@ -13,7 +13,8 @@ public class Libro {
     private String titulo;
     private int numeroPaginas;
     private String numeroReferencia;
-
+    private int vecesPrestado;
+    
     /**
      * Fija el autor y el titulo del libro a los dados como parametro
      */
@@ -23,6 +24,7 @@ public class Libro {
         titulo = tituloLibro;
         numeroPaginas = paginas;
         numeroReferencia = "";
+        vecesPrestado = 0;
     }
    
     /**
@@ -92,11 +94,27 @@ public class Libro {
     public String getDetalles(){
         String detalles = "";
         if(numeroReferencia.length() > 0){
-            detalles = "Título: " + titulo + ", Autor: " + autor + ", Número de páginas " + numeroPaginas + ", Número de referencia: " + numeroReferencia;
+            detalles = "Título: " + titulo + ", Autor: " + autor + ", Número de páginas " 
+            + numeroPaginas + ", Número de referencia: " + numeroReferencia + ", Número de préstamos: " + vecesPrestado;
         }
         else{
-            detalles = "Título: " + titulo + ", Autor: " + autor + ", Número de páginas " + numeroPaginas + ", Número de referencia: " + "ZZZ";
+            detalles = "Título: " + titulo + ", Autor: " + autor + ", Número de páginas " 
+            + numeroPaginas + ", Número de referencia: " + "ZZZ" + ", Número de préstamos: " + vecesPrestado;
         }
         return detalles;
+    }
+    
+    /**
+     * Cuenta las veces que el libro ha sido prestado
+     */
+    public void setPrestar(){
+        vecesPrestado ++;
+    }
+    
+    /**
+     * Devuelve el número de veces que ha sido prestado un libro
+     */
+    public int getVecesPrestado(){
+        return vecesPrestado;
     }
 }
