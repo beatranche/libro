@@ -14,17 +14,19 @@ public class Libro {
     private int numeroPaginas;
     private String numeroReferencia;
     private int vecesPrestado;
+    private boolean esLibroDeTexto;
     
     /**
      * Fija el autor y el titulo del libro a los dados como parametro
      */
-    public Libro(String autorLibro, String tituloLibro, int paginas)
+    public Libro(String autorLibro, String tituloLibro, int paginas, boolean libroTexto)
     {
         autor = autorLibro;
         titulo = tituloLibro;
         numeroPaginas = paginas;
         numeroReferencia = "";
         vecesPrestado = 0;
+        esLibroDeTexto = libroTexto;
     }
    
     /**
@@ -95,11 +97,13 @@ public class Libro {
         String detalles = "";
         if(numeroReferencia.length() > 0){
             detalles = "Título: " + titulo + ", Autor: " + autor + ", Número de páginas " 
-            + numeroPaginas + ", Número de referencia: " + numeroReferencia + ", Número de préstamos: " + vecesPrestado;
+            + numeroPaginas + ", Número de referencia: " + numeroReferencia + ", Número de préstamos: " 
+            + vecesPrestado + ", Libro de texto: " + getEsLibroDeTexto();;
         }
         else{
             detalles = "Título: " + titulo + ", Autor: " + autor + ", Número de páginas " 
-            + numeroPaginas + ", Número de referencia: " + "ZZZ" + ", Número de préstamos: " + vecesPrestado;
+            + numeroPaginas + ", Número de referencia: " + "ZZZ" + ", Número de préstamos: " 
+            + vecesPrestado + ", Libro de texto: " + getEsLibroDeTexto();;
         }
         return detalles;
     }
@@ -107,7 +111,7 @@ public class Libro {
     /**
      * Cuenta las veces que el libro ha sido prestado
      */
-    public void setPrestar(){
+    public void prestar(){
         vecesPrestado ++;
     }
     
@@ -116,5 +120,19 @@ public class Libro {
      */
     public int getVecesPrestado(){
         return vecesPrestado;
+    }
+    
+    /**
+     * Devuelve si el libro es de texto o no
+     */
+    public String getEsLibroDeTexto(){
+        String libroTexto = "";
+        if (esLibroDeTexto == true){
+            libroTexto = "SI";
+        }
+        else{
+            libroTexto = "NO";
+        }
+        return libroTexto;
     }
 }
